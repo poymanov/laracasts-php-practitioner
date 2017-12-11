@@ -1,9 +1,5 @@
 <?php
 
-$db = require 'bootstrap.php';
+require 'core/bootstrap.php';
 
-$query = new QueryBuilder($db);
-
-$tasks = $query->selectAll('tasks');
-
-require 'index.view.php';
+require Router::load('routes.php')->direct(Request::uri());
