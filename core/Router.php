@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class Router
 {
     private $routes = [
@@ -34,15 +36,16 @@ class Router
             );
         }
 
-        throw new Exception('No route defined defined');
+        throw new \Exception('No route defined defined');
     }
 
     protected function callAction($controller, $action)
     {
+        $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
 
         if(!method_exists($controller, $action)) {
-            throw new Exception("Action {$action} not exists in the controller {$controller}");
+            throw new \Exception("Action {$action} not exists in the controller {$controller}");
         }
 
         return $controller->$action();

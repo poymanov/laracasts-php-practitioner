@@ -3,4 +3,6 @@
 require 'vendor/autoload.php';
 require 'core/bootstrap.php';
 
-Router::load('routes.php')->direct(Request::uri(), Request::method());
+use App\Core\{Router, Request};
+
+Router::load('app/routes.php')->direct(Request::uri(), Request::method());

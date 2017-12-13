@@ -1,12 +1,14 @@
 <?php
 
+namespace App\Core\Database;
+
 class Connection
 {	
 	public static function make($config)
 	{
 		try {
-			return new PDO("mysql:host={$config['host']};dbname={$config['database']}", $config['user'], $config['password'], $config['options']);
-		} catch(PDOException $e) {
+			return new \PDO("mysql:host={$config['host']};dbname={$config['database']}", $config['user'], $config['password'], $config['options']);
+		} catch(\PDOException $e) {
 			die($e->getMessage());
 		}		
 	}

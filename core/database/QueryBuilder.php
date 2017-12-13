@@ -1,10 +1,12 @@
 <?php
 
+namespace App\Core\Database;
+
 class QueryBuilder
 {
 	protected $pdo;
 
-	public function __construct(PDO $pdo)
+	public function __construct(\PDO $pdo)
 	{
 		$this->pdo = $pdo;
 	}
@@ -13,7 +15,7 @@ class QueryBuilder
 	{
 		$stmt = $this->pdo->prepare("SELECT * FROM {$table}");
 		$stmt->execute();
-		return $stmt->fetchAll(PDO::FETCH_CLASS);
+		return $stmt->fetchAll(\PDO::FETCH_CLASS);
 	}
 
 	public function insert($table, $data)
@@ -28,7 +30,7 @@ class QueryBuilder
         try {
             $statement = $this->pdo->prepare($sql);
             $statement->execute($data);
-        } catch (PDOException $e) {
+        } catch (\PDOException $e) {
             die($e->getMessage());
         }
     }
