@@ -11,4 +11,5 @@
 		<?php endforeach; ?>
 	</ul>
 
+    <a href="/new-task">New task</a>
 <?php require 'partials/footer.php' ?>
